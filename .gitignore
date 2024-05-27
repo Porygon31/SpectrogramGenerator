@@ -1,0 +1,62 @@
+# Visual Studio
+.vscode/
+.vscode/*
+.vs/
+*.csproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vscode/
+.idea/
+.idea/*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# NuGet
+*.nupkg
+# The packages folder can be ignored because of the presence of package restore.
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows shortcuts
+*.lnk
+
+# Exclude node_modules folder
+node_modules/
+
+# Exclude log files
+*.log
+
+# Rider
+.idea/
+.idea/*
+*.sln.iml
+.idea.SpectrogramGenerator/
+
+# Include settings.json if present in the root or subfolders
+!settings.json
