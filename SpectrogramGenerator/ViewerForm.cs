@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace SpectrogramGenerator
@@ -10,16 +9,18 @@ namespace SpectrogramGenerator
     {
         private List<string> _imagePaths;
         private int _currentIndex;
+        private float _zoomFactor;
+        private Point _mouseDownLocation;
 
         public ViewerForm(List<string> imagePaths)
         {
             InitializeComponent();
             _imagePaths = imagePaths;
             _currentIndex = 0;
+            _zoomFactor = 1.0f;
             DisplayImage();
         }
 
-        // Affiche l'image actuelle
         private void DisplayImage()
         {
             if (_imagePaths.Count == 0)
@@ -31,28 +32,81 @@ namespace SpectrogramGenerator
             if (_currentIndex < 0) _currentIndex = 0;
             if (_currentIndex >= _imagePaths.Count) _currentIndex = _imagePaths.Count - 1;
 
-            if (File.Exists(_imagePaths[_currentIndex]))
+            if (System.IO.File.Exists(_imagePaths[_currentIndex]))
             {
-                pictureBox.Image = Image.FromFile(_imagePaths[_currentIndex]);
+                Image image = Image.FromFile(_imagePaths[_currentIndex]);
+                pictureBox.Image = image;
+                pictureBox.Size = new Size((int)(image.Width * _zoomFactor), (int)(image.Height * _zoomFactor));
+                lblImageInfo.Text = $"Image {_currentIndex + 1}/{_imagePaths.Count}: {_imagePaths[_currentIndex]}";
             }
             else
             {
                 MessageBox.Show("Le fichier image n'existe pas.");
             }
+
+            // Mettre à jour les boutons
+            btnPrevious.Enabled = _currentIndex > 0;
+            btnNext.Enabled = _currentIndex < _imagePaths.Count - 1;
         }
 
-        // Gestionnaire de l'événement Click pour le bouton Précédent
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            _currentIndex--;
+            if (_currentIndex > 0)
+            {
+                _currentIndex--;
+                DisplayImage();
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (_currentIndex < _imagePaths.Count - 1)
+            {
+                _currentIndex++;
+                DisplayImage();
+            }
+        }
+
+        private void btnZoomIn_Click(object sender, EventArgs e)
+        {
+            _zoomFactor += 0.1f;
             DisplayImage();
         }
 
-        // Gestionnaire de l'événement Click pour le bouton Suivant
-        private void btnNext_Click(object sender, EventArgs e)
+        private void btnZoomOut_Click(object sender, EventArgs e)
         {
-            _currentIndex++;
-            DisplayImage();
+            if (_zoomFactor > 0.1f)
+            {
+                _zoomFactor -= 0.1f;
+                DisplayImage();
+            }
+        }
+
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                _mouseDownLocation = e.Location;
+                pictureBox.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                panel.AutoScrollPosition = new Point(
+                    panel.AutoScrollPosition.X - (e.X - _mouseDownLocation.X),
+                    panel.AutoScrollPosition.Y - (e.Y - _mouseDownLocation.Y));
+            }
+        }
+
+        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                pictureBox.Cursor = Cursors.Default;
+            }
         }
     }
 }

@@ -37,10 +37,10 @@ namespace SpectrogramGenerator
             this.txtSoxOptionsFull = new System.Windows.Forms.TextBox();
             this.groupBoxSoxOptionsZoom = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.cmbZoomWindowFunction = new System.Windows.Forms.ComboBox();
-            this.lblZoomWindowFunction = new System.Windows.Forms.Label();
             this.numZoomResolution = new System.Windows.Forms.NumericUpDown();
             this.lblZoomResolution = new System.Windows.Forms.Label();
+            this.cmbZoomWindowFunction = new System.Windows.Forms.ComboBox();
+            this.lblZoomWindowFunction = new System.Windows.Forms.Label();
             this.btnBrowseSoxPath = new System.Windows.Forms.Button();
             this.btnBrowseOutputRoot = new System.Windows.Forms.Button();
             this.lblOutputRootDirectory = new System.Windows.Forms.Label();
@@ -83,16 +83,14 @@ namespace SpectrogramGenerator
             // groupBoxSoxOptionsZoom
             // 
             this.groupBoxSoxOptionsZoom.Controls.Add(this.btnSave);
-            this.groupBoxSoxOptionsZoom.Controls.Add(this.cmbZoomWindowFunction);
-            this.groupBoxSoxOptionsZoom.Controls.Add(this.lblZoomWindowFunction);
             this.groupBoxSoxOptionsZoom.Controls.Add(this.numZoomResolution);
             this.groupBoxSoxOptionsZoom.Controls.Add(this.lblZoomResolution);
-            this.groupBoxSoxOptionsZoom.Location = new System.Drawing.Point(106, 254);
+            this.groupBoxSoxOptionsZoom.Location = new System.Drawing.Point(15, 254);
             this.groupBoxSoxOptionsZoom.Name = "groupBoxSoxOptionsZoom";
             this.groupBoxSoxOptionsZoom.Size = new System.Drawing.Size(444, 184);
             this.groupBoxSoxOptionsZoom.TabIndex = 5;
             this.groupBoxSoxOptionsZoom.TabStop = false;
-            this.groupBoxSoxOptionsZoom.Text = "Options Sox pour spectrogramme zoomé :";
+            this.groupBoxSoxOptionsZoom.Text = "Options Sox pour le spectrogramme zoomé :";
             // 
             // btnSave
             // 
@@ -103,24 +101,6 @@ namespace SpectrogramGenerator
             this.btnSave.Text = "Sauvegarder";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // cmbZoomWindowFunction
-            // 
-            this.cmbZoomWindowFunction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbZoomWindowFunction.FormattingEnabled = true;
-            this.cmbZoomWindowFunction.Items.AddRange(new object[] { "Hann", "Hamming", "Kaiser" });
-            this.cmbZoomWindowFunction.Location = new System.Drawing.Point(197, 110);
-            this.cmbZoomWindowFunction.Name = "cmbZoomWindowFunction";
-            this.cmbZoomWindowFunction.Size = new System.Drawing.Size(246, 21);
-            this.cmbZoomWindowFunction.TabIndex = 3;
-            // 
-            // lblZoomWindowFunction
-            // 
-            this.lblZoomWindowFunction.Location = new System.Drawing.Point(22, 111);
-            this.lblZoomWindowFunction.Name = "lblZoomWindowFunction";
-            this.lblZoomWindowFunction.Size = new System.Drawing.Size(155, 22);
-            this.lblZoomWindowFunction.TabIndex = 2;
-            this.lblZoomWindowFunction.Text = "Fonction de fenêtre:";
             // 
             // numZoomResolution
             // 
@@ -137,6 +117,24 @@ namespace SpectrogramGenerator
             this.lblZoomResolution.Size = new System.Drawing.Size(160, 28);
             this.lblZoomResolution.TabIndex = 0;
             this.lblZoomResolution.Text = "Résolution :";
+            // 
+            // cmbZoomWindowFunction
+            // 
+            this.cmbZoomWindowFunction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbZoomWindowFunction.FormattingEnabled = true;
+            this.cmbZoomWindowFunction.Items.AddRange(new object[] { "Hann", "Hamming", "Kaiser" });
+            this.cmbZoomWindowFunction.Location = new System.Drawing.Point(216, 204);
+            this.cmbZoomWindowFunction.Name = "cmbZoomWindowFunction";
+            this.cmbZoomWindowFunction.Size = new System.Drawing.Size(246, 21);
+            this.cmbZoomWindowFunction.TabIndex = 3;
+            // 
+            // lblZoomWindowFunction
+            // 
+            this.lblZoomWindowFunction.Location = new System.Drawing.Point(41, 205);
+            this.lblZoomWindowFunction.Name = "lblZoomWindowFunction";
+            this.lblZoomWindowFunction.Size = new System.Drawing.Size(155, 22);
+            this.lblZoomWindowFunction.TabIndex = 2;
+            this.lblZoomWindowFunction.Text = "Fonction de fenêtre:";
             // 
             // btnBrowseSoxPath
             // 
@@ -179,6 +177,8 @@ namespace SpectrogramGenerator
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtOutputRootDirectory);
+            this.Controls.Add(this.cmbZoomWindowFunction);
+            this.Controls.Add(this.lblZoomWindowFunction);
             this.Controls.Add(this.lblOutputRootDirectory);
             this.Controls.Add(this.btnBrowseOutputRoot);
             this.Controls.Add(this.btnBrowseSoxPath);
