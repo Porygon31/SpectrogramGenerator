@@ -11,6 +11,7 @@
         private System.Windows.Forms.TextBox txtFolderName;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Button btnOptions;
+        private System.Windows.Forms.Button btnCancel;
 
         protected override void Dispose(bool disposing)
         {
@@ -35,6 +36,8 @@
             this.txtFolderName = new System.Windows.Forms.TextBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.btnOptions = new System.Windows.Forms.Button();
+            this.lblSoxStatus = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // progressBar
@@ -67,8 +70,10 @@
             // 
             this.txtInputDirectory.Location = new System.Drawing.Point(12, 25);
             this.txtInputDirectory.Name = "txtInputDirectory";
+            this.txtInputDirectory.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtInputDirectory.Size = new System.Drawing.Size(660, 20);
             this.txtInputDirectory.TabIndex = 3;
+            this.txtInputDirectory.Text = "Dossier à analyser";
             // 
             // btnBrowseInput
             // 
@@ -107,9 +112,31 @@
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
+            // lblSoxStatus
+            // 
+            this.lblSoxStatus.AutoSize = true;
+            this.lblSoxStatus.Location = new System.Drawing.Point(17, 326);
+            this.lblSoxStatus.Name = "lblSoxStatus";
+            this.lblSoxStatus.Size = new System.Drawing.Size(59, 13);
+            this.lblSoxStatus.TabIndex = 8;
+            this.lblSoxStatus.Text = "Sox Path";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Location = new System.Drawing.Point(12, 180);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(760, 23);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "Annuler";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.lblSoxStatus);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.lblOutputDirectory);
@@ -123,6 +150,9 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
+
+        private System.Windows.Forms.Label lblSoxStatus;
     }
 }
